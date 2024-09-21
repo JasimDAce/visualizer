@@ -5,7 +5,7 @@ import Headline from "@/components/Headline";
 import { HeroParallaxDemo } from "@/components/Hero";
 import { Movingborder } from "@/components/Movingborder";
 import Name from "@/components/Name";
-import Navbar from "@/components/Navbar";
+import Navbar  from "@/components/Navbar";
 
 
 
