@@ -57,12 +57,10 @@ const Flow = ({ schemaData }) => {
     return edges;
   };
 
-  /* eslint-disable react-hooks/exhaustive-deps */
   useEffect(() => {
     setNodes(generateNodes());
     setEdges(generateEdges());
   }, [schemaData]);
-  /* eslint-enable react-hooks/exhaustive-deps */
 
   const handleNodeChanges = useCallback(
     (changes) => {

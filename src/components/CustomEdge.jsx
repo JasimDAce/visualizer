@@ -2,7 +2,7 @@ import { Position, getSmoothStepPath } from '@xyflow/react';
  
 const source = { x: 0, y: 20 };
 const target = { x: 150, y: 100 };
-const CustomEdge = () => {
+ 
 const [path, labelX, labelY, offsetX, offsetY] = getSmoothStepPath({
   sourceX: source.x,
   sourceY: source.y,
@@ -11,5 +11,4 @@ const [path, labelX, labelY, offsetX, offsetY] = getSmoothStepPath({
   targetY: target.y,
   targetPosition: Position.Left,
 });
-};
-export default CustomEdge;
+ 

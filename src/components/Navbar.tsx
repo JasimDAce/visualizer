@@ -1,10 +1,14 @@
 'use client'
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { HoveredLink, Menu, MenuItem, ProductItem } from "@/components/ui/navbar-menu";
 import { cn } from "@/lib/utils";
+import { useRouter } from "next/navigation";
 
 
 export function NavbarDemo() {
+
+  
+
   return (
     <div className="relative w-full flex items-center justify-center">
       <Navbar className="top-2" />
@@ -16,6 +20,26 @@ export function NavbarDemo() {
 }
 
 function Navbar({ className }: { className?: string }) {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const router = useRouter();
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      setIsLoggedIn(true); // User is logged in
+    }
+  }, []);
+
+  const handleAuthClick = () => {
+    if (isLoggedIn) {
+      // Logout user
+      localStorage.removeItem('token');
+      setIsLoggedIn(false);
+    } else {
+      // Redirect to the registration/login page
+      router.push('/register');
+    }
+  };
   const [active, setActive] = useState<string | null>(null);
   return (
     <div
@@ -24,10 +48,8 @@ function Navbar({ className }: { className?: string }) {
       <Menu setActive={setActive}>
         <MenuItem setActive={setActive} active={active} item="Services">
           <div className="flex flex-col space-y-4 text-sm">
-            <HoveredLink href="/">Web Development</HoveredLink>
-            <HoveredLink href="/">Interface Design</HoveredLink>
-            <HoveredLink href="/">Search Engine Optimization</HoveredLink>
-            <HoveredLink href="/">Branding</HoveredLink>
+            <HoveredLink href="/database-schema-visualizer">Database Schema Visualizer</HoveredLink>
+            
           </div>
         </MenuItem>
         <MenuItem setActive={setActive} active={active} item="Profile">
@@ -36,16 +58,15 @@ function Navbar({ className }: { className?: string }) {
               title="Profile"
               href=""
               src="/me.png"
-              description="B.Tech CSE (4th Year)"
+              description="Name : XYZ"
             />
+            <span onClick={handleAuthClick} className="cursor-pointer" > {isLoggedIn ? 'Logout' : 'Login'}</span>
           </div>
         </MenuItem>
-        <MenuItem setActive={setActive} active={active} item="Pricing">
+        <MenuItem setActive={setActive} active={active} item="About">
           <div className="flex flex-col space-y-4 text-sm">
-            <HoveredLink href="/hobby">Hobby</HoveredLink>
-            <HoveredLink href="/individual">Individual</HoveredLink>
-            <HoveredLink href="/team">Team</HoveredLink>
-            <HoveredLink href="/enterprise">Enterprise</HoveredLink>
+            <HoveredLink href="/">Visualize your database schema with ease. Our <br/>tool allows you to create and explore complex <br/>database structures effortlessly.</HoveredLink>
+            
           </div>
         </MenuItem>
       </Menu>

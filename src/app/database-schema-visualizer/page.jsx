@@ -5,7 +5,7 @@ import React, { useState } from "react";
 
 const fieldTypes = ["String", "Number", "ObjectId", "Date"];
 
-const Visualizer = () => {
+const DatabaseSchemaVisualizer = () => {
   const [schemaArray, setSchemaArray] = useState([]);
   const [newTableName, setNewTableName] = useState("");
   const [selectedTableIndex, setSelectedTableIndex] = useState(null);
@@ -288,4 +288,4 @@ const Visualizer = () => {
   );
 };
 
-export default Visualizer;
+export default DatabaseSchemaVisualizer;
