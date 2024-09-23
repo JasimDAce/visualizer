@@ -22,13 +22,13 @@ export function Movingborder() {
 
   // Handle the button click based on login status
   const handleButtonClick = () => {
-    if (isLoggedIn) {
+    // if (isLoggedIn) {
       // If logged in, navigate to the main component
       router.push("/database-schema-visualizer");
-    } else {
-      // If not logged in, navigate to the registration page
-      router.push("/register");
-    }
+    // } else {
+    //   // If not logged in, navigate to the registration page
+    //   router.push("/register");
+    // }
   };
   return ( 
       <Button
