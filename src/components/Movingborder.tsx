@@ -24,7 +24,7 @@ export function Movingborder() {
   const handleButtonClick = () => {
     // if (isLoggedIn) {
       // If logged in, navigate to the main component
-      router.push("/database-schema-visualizer");
+      router.push("/login");
     // } else {
     //   // If not logged in, navigate to the registration page
     //   router.push("/register");
