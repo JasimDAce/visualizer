@@ -28,18 +28,20 @@ export function LoginForm() {
       password: "",
     },
     onSubmit: (values) => {
+      router.push("/database-schema-visualizer");
+      toast.success("Login Success");
       console.log(values);
-      axios
-        .post("http://localhost:5000/user/authenticate", values)
-        .then((result) => {
-          toast.success("Login Success");
-          localStorage.setItem("token", result.data.token);
-          router.push("/");
-        })
-        .catch((err) => {
-          console.log(err);
-          toast.error(err.response.data.message);
-        });
+      // axios
+      //   .post("http://localhost:5000/user/authenticate", values)
+      //   .then((result) => {
+      //     toast.success("Login Success");
+      //     localStorage.setItem("token", result.data.token);
+      //     router.push("/");
+      //   })
+      //   .catch((err) => {
+      //     console.log(err);
+      //     toast.error(err.response.data.message);
+      //   });
     },
     validationSchema: LoginSchema,
   });
